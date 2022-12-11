@@ -11,15 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-header {
-  background-color: #404040;
-  padding: 1rem; /* 1rem = 16 px  */
-}
-header a {
-  color: #ffffff;
-  font-weight: bold;
-  text-decoration: none;
-}
+
 .main {
   flex: 1;
 }
@@ -38,4 +30,16 @@ header a {
 }
 .product-info {
   padding: 1rem;
+}
+.text-center {
+  color: aliceblue;
+  margin-left: 50%;
+}
+.site-container {
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+footer {
 }
