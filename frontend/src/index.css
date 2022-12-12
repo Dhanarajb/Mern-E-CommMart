@@ -41,5 +41,10 @@ code {
 main {
   flex: 1;
 }
-footer {
+.rating span {
+  color: #ffc000;
+}
+.btn-primary {
+  background-color: #f0c040;
+  color: black;
 }
