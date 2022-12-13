@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row";

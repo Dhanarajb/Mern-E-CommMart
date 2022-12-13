@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
 import { Helmet } from "react-helmet-async";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MessaageBox from "../components/MessaageBox";
 import { Store } from "../store";
 import Card from "react-bootstrap/Card";
