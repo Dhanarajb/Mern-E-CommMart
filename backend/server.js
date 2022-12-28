@@ -1,31 +1,27 @@
 import Express from "express";
 import data from "./data.js";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import seedrouter from "./routes/seedroutes.js";
+import productrouter from "./routes/productroutes.js";
 
+dotenv.config();
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("connected to db");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 const app = Express();
 
-app.get("/api/products", (req, resp) => {
-  resp.send(data.products);
-});
+app.use("/api/seed", seedrouter);
+app.use("/api/products", productrouter);
 
-app.get("/api/products/slug/:slug", (req, resp) => {
-  const product = data.products.find((x) => x.slug === req.params.slug);
-  if (product) {
-    resp.send(product);
-  } else {
-    resp.status(404).send("product not found");
-  }
-  resp.send(data.products);
-});
-
-app.get("/api/products/:id", (req, resp) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    resp.send(product);
-  } else {
-    resp.status(404).send("product not found");
-  }
-  resp.send(data.products);
-});
+// app.get("/api/products", (req, resp) => {
+//   resp.send(data.products);
+// });
 
 const port = process.env.PORT || 5200;
 app.listen(port, () => {
