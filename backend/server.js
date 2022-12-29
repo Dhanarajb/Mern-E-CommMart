@@ -1,9 +1,10 @@
-import Express from "express";
+import express from "express";
 import data from "./data.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import seedrouter from "./routes/seedroutes.js";
 import productrouter from "./routes/productroutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 dotenv.config();
 mongoose
@@ -14,14 +15,18 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
-const app = Express();
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/seed", seedrouter);
 app.use("/api/products", productrouter);
+app.use("/api/users", userRouter);
 
-// app.get("/api/products", (req, resp) => {
-//   resp.send(data.products);
-// });
+app.use((err, req, resp, next) => {
+  resp.status(500).send({ message: err.message });
+});
 
 const port = process.env.PORT || 5200;
 app.listen(port, () => {
