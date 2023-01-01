@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import Axios from "axios";
+import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -47,7 +47,7 @@ export default function PlaceOrderScreen() {
     try {
       dispatch({ type: "CREATE_REQUEST" });
 
-      const { data } = await Axios.post(
+      const { data } = await axios.post(
         "/api/orders",
         {
           orderItems: cart.cartItems,

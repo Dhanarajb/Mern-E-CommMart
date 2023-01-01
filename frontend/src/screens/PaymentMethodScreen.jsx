@@ -5,8 +5,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Store } from "../store";
+import { Modal } from "react-modal";
 
 export default function PaymentMethodScreen() {
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
@@ -17,6 +19,9 @@ export default function PaymentMethodScreen() {
     paymentMethod || "PayPal"
   );
 
+  const orderDone = () => {
+    alert("done");
+  };
   useEffect(() => {
     if (!shippingAddress.address) {
       navigate("/shipping");
@@ -58,7 +63,9 @@ export default function PaymentMethodScreen() {
             />
           </div>
           <div className="mb-3">
-            <Button type="submit">Continue</Button>
+            <Button type="submit" onClick={orderDone}>
+              Continue
+            </Button>
           </div>
         </Form>
       </div>
